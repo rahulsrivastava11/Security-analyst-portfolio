@@ -1,0 +1,15 @@
+TARGET IP: 127.0.0.1 (Localhost / WSL)
+OPERATING SYSTEM DETECTED: Unknown / Inconclusive (Nmap OS detection failed due to the hybrid network stack of Windows Subsystem for Linux. This is expected behavior for WSL environments).
+
+--- OPEN PORTS & SERVICES ---
+
+PORT: 8090/tcp
+STATE: open
+SERVICE: http
+VERSION: SimpleHTTPServer 0.6 (Python 3.12.3)
+
+SECURITY RISK ANALYSIS: 
+The Python SimpleHTTPServer module is running on port 8090. This module is designed strictly for local development and testing, not for production environments. It poses a security risk if exposed to a public or untrusted network because it lacks basic security features:
+1. No Encryption (HTTPS): All traffic is sent in plaintext, making it vulnerable to packet sniffing and Man-in-the-Middle (MITM) attacks.
+2. No Authentication: Anyone who discovers the open port can access the files being served.
+3. Directory Listing: By default, if no index.html is present, it exposes the entire directory structure and its contents to the network.
